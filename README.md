@@ -1,4 +1,4 @@
-# AI Risk Manager for Razorpay
+# KAVACH-AI Risk Manager for Razorpay
 
 **Stop merchants losing money to fraud, chargebacks, and returns at scale.**
 
