@@ -3,7 +3,7 @@ import { formatCurrency, formatRelativeTime } from '../utils/formatters';
 import { getRiskBgColor, getRiskTextColor, getActionColor, getStatusColor } from '../utils/riskColors';
 import RiskScoreCard from './RiskScoreCard';
 
-interface Transaction {
+export interface Transaction {
   id: string;
   transaction_id: string;
   merchant_id: string;
@@ -179,7 +179,6 @@ const TransactionFeed: React.FC<TransactionFeedProps> = ({ onSelectTransaction }
             <tbody className="divide-y divide-gray-200">
               {transactions.map((txn) => {
                 const maxScore = getMaxScore(txn);
-                const riskLevel = getRiskLevel(maxScore);
 
                 return (
                   <React.Fragment key={txn.id}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatNumber, formatPercentage } from '../utils/formatters';
-import { getRiskColor, getRiskBgColor, getRiskTextColor } from '../utils/riskColors';
+import { getRiskBgColor, getRiskTextColor } from '../utils/riskColors';
 
 interface RiskOverviewProps {}
 
@@ -73,8 +73,6 @@ const RiskOverview: React.FC<RiskOverviewProps> = () => {
 
   const FalsePositiveRateCard = () => {
     const fpr = metrics.false_positive_rate;
-    const riskLevel = fpr > 0.01 ? 'high' : fpr > 0.005 ? 'medium' : 'low';
-    const riskColors = getRiskColor(fpr);
     const riskBg = getRiskBgColor(fpr);
     const riskText = getRiskTextColor(fpr);
 

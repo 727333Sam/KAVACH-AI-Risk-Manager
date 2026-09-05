@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Transaction } from './components/TransactionFeed';
 import RiskOverview from './components/RiskOverview';
 import TransactionFeed from './components/TransactionFeed';
 import MerchantConfig from './components/MerchantConfig';
@@ -6,7 +7,7 @@ import MetricsDashboard from './components/MetricsDashboard';
 import FalsePositiveTracker from './components/FalsePositiveTracker';
 
 function App() {
-  const [selectedTransaction, setSelectedTransaction] = useState(null);
+  const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
 
   return (
     <div className="min-h-screen bg-gray-50">
