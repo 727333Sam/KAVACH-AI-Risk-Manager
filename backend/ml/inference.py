@@ -49,21 +49,21 @@ class MLInferenceEngine:
             if fraud_model_path.exists():
                 self.models['fraud'] = joblib.load(fraud_model_path)
                 self.scalers['fraud'] = joblib.load(self.models_dir / "scalers" / "fraud_scaler.joblib")
-                print(f"✓ Loaded fraud model from {fraud_model_path}")
+                print(f"[OK] Loaded fraud model from {fraud_model_path}")
 
             # Chargeback model
             chargeback_model_path = self.models_dir / "chargeback_rf.joblib"
             if chargeback_model_path.exists():
                 self.models['chargeback'] = joblib.load(chargeback_model_path)
                 self.scalers['chargeback'] = joblib.load(self.models_dir / "scalers" / "chargeback_scaler.joblib")
-                print(f"✓ Loaded chargeback model from {chargeback_model_path}")
+                print(f"[OK] Loaded chargeback model from {chargeback_model_path}")
 
             # Return fraud model
             return_model_path = self.models_dir / "return_fraud_lr.joblib"
             if return_model_path.exists():
                 self.models['return_fraud'] = joblib.load(return_model_path)
                 self.scalers['return_fraud'] = joblib.load(self.models_dir / "scalers" / "return_fraud_scaler.joblib")
-                print(f"✓ Loaded return fraud model from {return_model_path}")
+                print(f"[OK] Loaded return fraud model from {return_model_path}")
 
         except Exception as e:
             print(f"Error loading models: {e}")

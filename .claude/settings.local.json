@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python backend/ml/train.py)"
+      "Bash(python backend/ml/train.py)",
+      "Bash(python backend/ml/test_pipeline.py)"
     ]
   }
 }
