@@ -1,0 +1,170 @@
+{
+  "training_date": "2026-09-05T08:51:37.418311",
+  "models": {
+    "fraud_detection": {
+      "model_type": "XGBoost",
+      "target": "is_fraud",
+      "n_features": 26,
+      "n_train": 1600,
+      "n_test": 400,
+      "optimal_threshold": 0.7347918152809143,
+      "precision": 0.5,
+      "recall": 0.08333333333333333,
+      "f1_score": 0.14285714285714285,
+      "auc_roc": 0.5803264604810997,
+      "confusion_matrix": [
+        [
+          387,
+          1
+        ],
+        [
+          11,
+          1
+        ]
+      ],
+      "feature_importance": {
+        "transaction_amount": 0.031122395768761635,
+        "amount_zscore": 0.04642517864704132,
+        "velocity_count_1h": 0.015912756323814392,
+        "velocity_count_24h": 0.036552220582962036,
+        "velocity_amount_24h": 0.04034525901079178,
+        "country_distance_km": 0.03708316385746002,
+        "country_new": 0.011349800042808056,
+        "state_count_24h": 0.04185973480343819,
+        "device_new": 0.026662908494472504,
+        "device_count": 0.039669279009103775,
+        "device_velocity_24h": 0.028685500845313072,
+        "hour_of_day": 0.0966242328286171,
+        "day_of_week": 0.03273339942097664,
+        "is_weekend": 0.03470716252923012,
+        "is_night": 0.023411383852362633,
+        "customer_age_days": 0.04676845669746399,
+        "customer_txn_count": 0.03216336667537689,
+        "customer_total_amount": 0.04834560304880142,
+        "customer_chargeback_rate": 0.04735657200217247,
+        "card_issuer_risk_score": 0.03555169701576233,
+        "mcc_fraud_rate": 0.03694485127925873,
+        "auth_3ds": 0.13028277456760406,
+        "auth_avs_match": 0.01888277567923069,
+        "auth_cvv_match": 0.01968279853463173,
+        "email_domain_suspicious": 0.010644098743796349,
+        "shipping_billing_mismatch": 0.030232621356844902
+      },
+      "training_date": "2026-09-05T08:51:10.667310",
+      "best_params": {
+        "learning_rate": 0.1,
+        "max_depth": 4,
+        "n_estimators": 100,
+        "scale_pos_weight": 31.0
+      }
+    },
+    "chargeback_prediction": {
+      "model_type": "RandomForest",
+      "target": "is_chargeback",
+      "n_features": 21,
+      "n_train": 1600,
+      "n_test": 400,
+      "optimal_threshold": 0.5,
+      "precision": 0.08333333333333333,
+      "recall": 0.1111111111111111,
+      "f1_score": 0.09523809523809523,
+      "auc_roc": 0.4714407502131287,
+      "confusion_matrix": [
+        [
+          380,
+          11
+        ],
+        [
+          8,
+          1
+        ]
+      ],
+      "feature_importance": {
+        "transaction_amount": 0.042300147219966555,
+        "transaction_days_old": 0.12915222050662625,
+        "is_recurring": 0.007818423776741135,
+        "mcc_code": 0.046827242334417485,
+        "customer_age_days": 0.07323818991717719,
+        "customer_txn_count": 0.036463912340007655,
+        "customer_avg_txn_amount": 0.0561403180244108,
+        "customer_lifetime_value": 0.09550366769253696,
+        "customer_chargeback_history": 0.028053642506092696,
+        "customer_dispute_rate": 0.07890414750639249,
+        "merchant_category_risk": 0.05536526037081426,
+        "merchant_chargeback_rate": 0.061589238415269865,
+        "merchant_avg_txn_amount": 0.07126063582854793,
+        "card_present": 0.006680468721866233,
+        "auth_3ds": 0.022349420343039668,
+        "auth_avs_match": 0.013818925297966984,
+        "hour_of_day": 0.05154873013587116,
+        "is_weekend": 0.00467567737373849,
+        "has_tracking": 0.011783015011440802,
+        "delivery_days": 0.10548878551620854,
+        "refund_issued": 0.0010379311608669603
+      },
+      "training_date": "2026-09-05T08:51:36.905376",
+      "best_params": {
+        "class_weight": "balanced",
+        "max_depth": 6,
+        "min_samples_leaf": 2,
+        "min_samples_split": 5,
+        "n_estimators": 100
+      }
+    },
+    "return_fraud_classifier": {
+      "model_type": "LogisticRegression",
+      "target": "is_return_fraud",
+      "n_features": 18,
+      "n_train": 1600,
+      "n_test": 400,
+      "optimal_threshold": 0.5,
+      "precision": 0.0425531914893617,
+      "recall": 0.375,
+      "f1_score": 0.07643312101910828,
+      "auc_roc": 0.5550130208333334,
+      "confusion_matrix": [
+        [
+          249,
+          135
+        ],
+        [
+          10,
+          6
+        ]
+      ],
+      "feature_coefficients": {
+        "return_count": -0.08292324607773753,
+        "return_rate": -0.14591138810307783,
+        "high_value_return_count": 0.27241622804902493,
+        "return_to_purchase_ratio": -0.05603830458456638,
+        "customer_age_days": -0.1125333758601896,
+        "customer_txn_count": -0.20861343645994426,
+        "customer_lifetime_value": 0.037202856657185,
+        "customer_avg_txn_amount": -0.25001502215487736,
+        "customer_return_fraud_history": 0.16520102664396455,
+        "item_price": -0.14502091216374666,
+        "item_category": 0.16242626125705756,
+        "item_return_rate": 0.10492520568766457,
+        "is_high_return_category": 0.07551984631148773,
+        "return_days_from_purchase": 0.1578897014888716,
+        "return_reason_suspicious": 0.12226796593289892,
+        "item_condition_ok": -0.26472785433904705,
+        "is_return_window_edge": -0.02445917469548483,
+        "seasonal_high_return_period": 0.024555378403154884
+      },
+      "training_date": "2026-09-05T08:51:37.386873",
+      "best_params": {
+        "C": 1.0,
+        "class_weight": "balanced",
+        "max_iter": 1000,
+        "penalty": "l2",
+        "solver": "lbfgs"
+      }
+    }
+  },
+  "performance_targets": {
+    "fraud": "70%+ recall @ 0.5% FPR",
+    "chargeback": "60%+ precision (minimize false alarms)",
+    "return_fraud": "80%+ recall on known patterns"
+  }
+}

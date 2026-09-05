@@ -3,12 +3,14 @@ Fraud detection engine with rules + ML
 """
 
 from backend.rules.fraud_rules import FraudRules
+from backend.ml.inference import MLInferenceEngine
 
 class FraudEngine:
     """Fraud scoring engine"""
 
-    def __init__(self):
+    def __init__(self, ml_engine: MLInferenceEngine = None):
         self.rules = FraudRules()
+        self.ml_engine = ml_engine
         self.rules_weight = 0.4
         self.ml_weight = 0.6
 
@@ -20,6 +22,7 @@ class FraudEngine:
         {
             "rules_score": 0-100,
             "ml_probability": 0-1,
+            "ml_latency_ms": float,
             "final_score": 0-100,
             "confidence": 0-1,
             "explanation": "string"
@@ -28,8 +31,23 @@ class FraudEngine:
         # Get rules score
         rules_score = self.rules.score(transaction_data)
 
-        # Get ML probability (placeholder)
-        ml_probability = 0.3  # Will implement ML inference
+        # Get ML probability
+        ml_probability = 0.3
+        ml_latency_ms = 0
+        ml_explanation = ""
+
+        if self.ml_engine:
+            try:
+                ml_result = self.ml_engine.predict_fraud(transaction_data)
+                if 'error' not in ml_result:
+                    ml_probability = ml_result.get('probability', 0.3)
+                    ml_latency_ms = ml_result.get('latency_ms', 0)
+                    cached = ml_result.get('cached', False)
+                    ml_explanation = f"ML inference {'(cached)' if cached else ''}: {ml_probability:.3f}"
+                else:
+                    ml_explanation = f"ML unavailable: {ml_result.get('error', 'unknown error')}"
+            except Exception as e:
+                ml_explanation = f"ML inference failed: {str(e)}"
 
         # Hybrid scoring: 40% rules + 60% ML
         # Convert ML probability (0-1) to 0-100 scale
@@ -39,7 +57,8 @@ class FraudEngine:
         return {
             "rules_score": rules_score,
             "ml_probability": ml_probability,
+            "ml_latency_ms": ml_latency_ms,
             "final_score": final_score,
-            "confidence": 0.85,
-            "explanation": f"Fraud risk detected via rule scoring and ML analysis"
+            "confidence": min(0.95, 0.5 + abs(ml_probability - 0.5)),
+            "explanation": f"Fraud risk: rules={rules_score:.1f}, ml={ml_explanation}"
         }
