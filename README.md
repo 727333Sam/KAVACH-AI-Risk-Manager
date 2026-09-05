@@ -161,3 +161,14 @@ Build a working detector, verifier, or auto-responder for one class of loss (fra
 
 **Built for Razorpay Buildathon 2026**  
 *Stop merchants losing money. Protect at scale.*
+
+
+--- SUBMISSION PACKAGE (2026-09-05) ---
+- All 15 heuristic rules implemented (6 fraud, 5 chargeback, 4 return)
+- 3 ML models: fraud_xgboost.joblib (145KB), chargeback_rf.joblib (394KB), return_fraud_lr.joblib (5.8KB)
+- Honest metrics from metrics.json: fraud P=0.50 R=0.083 AUC=0.58; chargeback P=0.083 R=0.111 AUC=0.471; return P=0.043 R=0.375 AUC=0.555
+- 5 Mermaid diagrams in diagrams/ (system-architecture, fraud-detection-flow, chargeback-prevention-flow, return-fraud-flow, decision-tree)
+- Pitch deck: presentation/pitch.html (interactive, live Recharts, architecture + metrics)
+- Premium scroll sites: site-a/index.html (ORION dark), site-b/index.html (VERDANT light)
+- Demo: demo.py (complete standalone)
+- Git import: git init; git add -A; git commit -m 'AI Risk Manager Track 02'; git push

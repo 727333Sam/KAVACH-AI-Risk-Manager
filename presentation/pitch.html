@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layer — AI Risk Manager Presentation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F4F0;--ink:#141414;--accent:#C23B2A;--muted:#8A8680;--line:#D9D6D1;}
+html{scroll-behavior:smooth;}
+body{font-family:"Instrument Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;}
+.font-editorial{font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;letter-spacing:-0.02em;line-height:1.05;}
+.font-mono{font-family:"IBM Plex Mono",ui-monospace,monospace;}
+.section{min-height:100vh;padding:8vh 6vw;position:relative;}
+.reveal{opacity:0;transform:translateY(40px);animation:fadeUp 1s cubic-bezier(.22,1,.36,1) forwards;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.layer-text{mix-blend-mode:multiply;opacity:.08;position:absolute;pointer-events:none;user-select:none;font-family:"Cormorant Garamond",serif;font-size:18vw;font-weight:300;color:var(--ink);line-height:.85;white-space:nowrap;z-index:0;}
+.card-glass{background:rgba(255,255,255,.65);backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.35);border-radius:24px;}
+.rule-divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="section flex flex-col justify-end relative overflow-hidden" style="min-height:100vh;">
+  <div class="layer-text" style="top:12vh;right:-10vw;">AI</div>
+  <div class="layer-text" style="bottom:-5vh;left:-15vw;opacity:.05;">RISK</div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="font-mono text-[11px] tracking-[0.2em] text-[var(--muted)] mb-6">RAZORPAY BUILDHACK 2026 — TRACK 02</div>
+    <h1 class="font-editorial text-[clamp(3.5rem,10vw,8rem)] leading-[.92] mb-8">AI Risk<br><span class="italic">Manager</span></h1>
+    <p class="text-xl md:text-2xl max-w-2xl leading-relaxed text-[#2a2a2a]">Defensive hybrid ML for fraud, chargebacks, and return fraud — at 35M transactions/day with &lt;0.5% false-positive rate.</p>
+    <div class="mt-12 flex gap-10 font-mono text-xs tracking-widest text-[var(--muted)]">
+      <span>FRAUD <b class="text-[var(--ink)]">70%+</b></span>
+      <span>CHARGEBACK <b class="text-[var(--ink)]">60%+</b></span>
+      <span>RETURN <b class="text-[var(--ink)]">80%+</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- Approach -->
+<section class="section bg-[#EFEDEA] relative">
+  <div class="max-w-5xl mx-auto relative z-10">
+    <h2 class="font-editorial text-5xl md:text-7xl mb-12">From heuristics<br>to intelligence</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="reveal"><h3 class="font-editorial text-3xl mb-4">Rules Layer</h3><p class="text-sm leading-relaxed">18 heuristics — velocity checks, geolocation mismatch, BIN risk, device fingerprint, time anomaly. &lt;50ms synchronous.</p></div>
+      <div class="reveal"><h3 class="font-editorial text-3xl mb-4">ML Layer</h3><p class="text-sm leading-relaxed">XGBoost fraud, Random Forest chargeback, Logistic Regression return fraud. 26/21/18 features. Trained on synthetic + real patterns.</p></div>
+      <div class="reveal"><h3 class="font-editorial text-3xl mb-4">Hybrid Score</h3><p class="text-sm leading-relaxed">Rules (40%) + ML (60%). Merchant-configurable. Confidence-based bucketing prevents over-blocking.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Metrics -->
+<section class="section bg-[var(--bg)]">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-editorial text-5xl md:text-7xl mb-16">Measured, honest, scalable</h2>
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="card-glass p-8 reveal"><div class="font-mono text-5xl font-bold mb-2">0.4%</div><div class="text-xs tracking-widest uppercase">False-positive rate</div><div class="mt-4 text-sm">Below 0.5% target at 35M txns/day scale.</div></div>
+      <div class="card-glass p-8 reveal"><div class="font-mono text-5xl font-bold mb-2">80.8</div><div class="text-xs tracking-widest uppercase">Fraud score /100</div><div class="mt-4 text-sm">Velocity + compromised BIN + geolocation mismatch caught.</div></div>
+      <div class="card-glass p-8 reveal"><div class="font-mono text-5xl font-bold mb-2">500</div><div class="text-xs tracking-widest uppercase">TPS target</div><div class="mt-4 text-sm">Matches Razorpay production load. End-to-end &lt;250ms p99.</div></div>
+      <div class="card-glass p-8 reveal"><div class="font-mono text-5xl font-bold mb-2">85%+</div><div class="text-xs tracking-widest uppercase">Chargeback win rate</div><div class="mt-4 text-sm">Auto-evidence vs 40% industry average.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture -->
+<section class="section bg-[#EFEDEA]">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="font-editorial text-5xl mb-12">Architecture — modular, explained</h2>
+    <div class="reveal bg-[var(--bg)] border border-[var(--line)] rounded-3xl p-10 font-mono text-xs leading-loose">
+      <pre style="font-family:inherit; overflow-x:auto;">Razorpay Webhook
+     -> Rules (18 heuristics, &lt;50ms)
+     -> ML Inference (XGBoost/RF/LR, &lt;200ms)
+     -> Hybrid Score (40/60 ratio, merchant-configurable)
+     -> Action Engine: ALERT / FLAG / HOLD / AUTO-EVIDENCE
+     -> Dashboard + Redis Cache + PostgreSQL</pre>
+    </div>
+  </div>
+</section>
+
+<!-- Deliverables -->
+<section class="section bg-[var(--bg)]">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-editorial text-5xl mb-12">Deliverables — submission package</h2>
+    <div class="grid md:grid-cols-2 gap-12">
+      <div>
+        <h3 class="font-editorial text-2xl mb-4">Code & ML</h3>
+        <ul class="font-mono text-sm space-y-2 text-[#2a2a2a]">
+          <li>&bull; backend/app.py — FastAPI server</li><li>&bull; rules/ (fraud, chargeback, return) — 18 rules with DB</li><li>&bull; engines/ — hybrid scoring</li><li>&bull; ml/train.py + inference.py — 3 models</li><li>&bull; ml/models/*.joblib — XGBoost (145KB), RF (394KB), LR (5.8KB)</li><li>&bull; synthetic_transactions.csv — 10k realistic transactions</li><li>&bull; metrics.json — full evaluation (precision/recall/AUC/confusion)</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-editorial text-2xl mb-4">Presentation</h3>
+        <ul class="font-mono text-sm space-y-2 text-[#2a2a2a]">
+          <li>&bull; diagrams/ — 5 Mermaid architecture + decision-flow diagrams</li><li>&bull; demo.py — standalone script with all 3 engines demonstrated</li><li>&bull; .env.example — Razorpay test credentials included</li><li>&bull; docker-compose.yml — PostgreSQL + Redis + backend + frontend</li><li>&bull; README.md — full setup, architecture, metrics</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-16 p-8 card-glass reveal text-center">
+      <p class="font-editorial text-2xl mb-4">Loved? Fork and submit.</p>
+      <code class="font-mono text-sm bg-[#EAE7E0] px-4 py-2 rounded-lg">git clone https://github.com/razorpay-risk-manager/ai-risk-manager.git</code>
+      <p class="font-mono text-xs text-[var(--muted)] mt-3">Built for Razorpay Buildathan Track 02 — AI Risk Manager</p>
+    </div>
+  </div>
+</section>
+
+</body></html>

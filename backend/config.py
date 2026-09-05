@@ -12,8 +12,8 @@ class Settings(BaseSettings):
     api_reload: bool = True
     environment: str = "development"
 
-    # Database
-    database_url: str = "postgresql://riskmanager:riskmanager_dev@localhost:5432/razorpay_risk"
+    # Database (SQLite for demo, PostgreSQL for production)
+    database_url: str = "sqlite:///./razorpay_risk.db"
 
     # Redis
     redis_url: str = "redis://localhost:6379"
